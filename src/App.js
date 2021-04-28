@@ -1,24 +1,24 @@
 import React from "react";
 
 class App extends React.Component{ 
-  state = {
-    count: 0
-  };
-
-  add = () => {
-    this.setState(current => ({ count : current.count +1 }));
+  state={
+    isLoading: true,
+    movies: []
   }
-
-  remove = () => {
-    this.setState(current => ({ count : current.count -1 }));
+  componentDidMount(){
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 3000);
   }
   render(){
-    return <div>
-      <h1>The number is {this.state.count}</h1>
-      <button onClick={this.add}>Add</button>&nbsp;
-      <button onClick={this.remove}>Minus</button>
-      </div>
+    const {isLoading} = this.state;
+    return (<div>
+      {isLoading ? "Loading..." : "We are ready"}
+    </div>
+    );
   }
+
+
 }
 
 export default App;
