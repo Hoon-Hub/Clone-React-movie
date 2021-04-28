@@ -1,21 +1,24 @@
 import React from "react";
 
-function Food({ fav }){
-  
-  return <h1>I like {fav}</h1>
-}
+class App extends React.Component{ 
+  state = {
+    count: 0
+  };
 
-function App() {
-  return (
-    <div>
-      <h1>hello?</h1>
-      <Food fav="Kimchi" />
-      <Food fav="Ramen" />
-      <Food fav="Sangupsal" />
-      <Food fav="Jjajangmen" />
+  add = () => {
+    this.setState(current => ({ count : current.count +1 }));
+  }
 
-    </div>
-  );
+  remove = () => {
+    this.setState(current => ({ count : current.count -1 }));
+  }
+  render(){
+    return <div>
+      <h1>The number is {this.state.count}</h1>
+      <button onClick={this.add}>Add</button>&nbsp;
+      <button onClick={this.remove}>Minus</button>
+      </div>
+  }
 }
 
 export default App;
